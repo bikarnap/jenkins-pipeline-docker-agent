@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout source code from version control
+                checkout scm
+            }
+        }
+
+        stage('Build and Use Image 1') {
+            agent {
+                dockerfile {
+                    filename 'first.Dockerfile'
+                    dir '../' // Directory where Dockerfile1 is located
+                }
+            }
+            steps {
+                sh 'echo "This is some content" > /workspace/shared_file.txt'
+                sh 'echo "File created in container 1"'
+            }
+        }
+
+        stage('Build and Use Image 2') {
+            agent {
+                dockerfile {
+                    filename 'second.Dockerfile'
+                    dir '../' // Directory where Dockerfile2 is located
+                }
+            }
+            steps {
+                sh 'cat /workspace/shared_file.txt'
+                sh 'echo "File contents printed from container 2"'
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs() // Clean up workspace after the build
+        }
+    }
+}
