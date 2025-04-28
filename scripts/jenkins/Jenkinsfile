@@ -43,7 +43,7 @@ pipeline {
     post {
         always {
           
-            archiveArtifacts artifacts: '**/*.txt',
+            archiveArtifacts artifacts: '*.txt',
                    allowEmptyArchive: true,
                    fingerprint: true,
                    onlyIfSuccessful: true
