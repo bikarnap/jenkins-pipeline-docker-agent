@@ -13,7 +13,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename "first.Dockerfile"
-                    dir '../' // Directory where Dockerfile1 is located
+                    // dir '../' // Directory where Dockerfile1 is located
                 }
             }
             steps {
@@ -26,7 +26,7 @@ pipeline {
             agent {
                 dockerfile {
                     filename "second.Dockerfile"
-                    dir '../' // Directory where Dockerfile2 is located
+                    // dir '../' // Directory where Dockerfile2 is located
                 }
             }
             steps {
