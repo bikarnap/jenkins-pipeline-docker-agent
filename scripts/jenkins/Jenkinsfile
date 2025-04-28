@@ -7,12 +7,14 @@ pipeline {
 
     environment {
         WORKSPACE_DIR = "${env.WORKSPACE}"
+        GITHUB_CREDENTIALS_ID = 'ge3da2d56-b3c4-4da5-aa0c-2fb4fbdace29' // Replace with your actual credentials ID
     }
 
     stages {
         stage('Checkout') {
     steps {
-        git 'https://github.com/bikarnap/jenkins-pipeline-docker-agent.git'
+        git credentialsId: "${GITHUB_CREDENTIALS_ID}",
+          URL: 'https://github.com/bikarnap/jenkins-pipeline-docker-agent.git'
     }
 }
         stage('Build and Use Image 1') {
