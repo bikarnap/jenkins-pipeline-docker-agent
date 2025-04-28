@@ -38,11 +38,12 @@ pipeline {
 
     post {
         always {
-            cleanWs() // Clean up workspace after the build
+          
             archiveArtifacts artifacts: '**/*.txt',
                    allowEmptyArchive: true,
                    fingerprint: true,
                    onlyIfSuccessful: true
+            cleanWs() // Clean up workspace after the build
             
         }
     }
