@@ -17,7 +17,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'echo "This is some content" > /workspace/shared_file.txt'
+                sh 'echo "This is some content" > ./shared_file.txt'
                 sh 'echo "File created in container 1"'
             }
         }
@@ -30,7 +30,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'cat /workspace/shared_file.txt'
+                sh 'cat ./shared_file.txt'
                 sh 'echo "File contents printed from container 2"'
             }
         }
