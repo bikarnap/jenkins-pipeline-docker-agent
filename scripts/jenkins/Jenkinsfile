@@ -12,7 +12,7 @@ pipeline {
         stage('Build and Use Image 1') {
             agent {
                 dockerfile {
-                    filename 'first.Dockerfile'
+                    filename '../../first.Dockerfile'
                     dir '../' // Directory where Dockerfile1 is located
                 }
             }
@@ -25,7 +25,7 @@ pipeline {
         stage('Build and Use Image 2') {
             agent {
                 dockerfile {
-                    filename 'second.Dockerfile'
+                    filename '../../second.Dockerfile'
                     dir '../' // Directory where Dockerfile2 is located
                 }
             }
