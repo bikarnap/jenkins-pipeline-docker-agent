@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout source code from version control
-                checkout scm
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         // Checkout source code from version control
+        //         checkout scm
+        //     }
+        // }
 
         stage('Build and Use Image 1') {
             agent {
