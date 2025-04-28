@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
     steps {
         git credentialsId: "${GITHUB_CREDENTIALS_ID}",
-          URL: 'https://github.com/bikarnap/jenkins-pipeline-docker-agent.git'
+          url: 'https://github.com/bikarnap/jenkins-pipeline-docker-agent.git'
     }
 }
         stage('Build and Use Image 1') {
