@@ -47,13 +47,11 @@ pipeline {
                              onlyIfSuccessful: true
             cleanWs()
         }
+         success {
+            githubNotify context: 'build', status: 'SUCCESS', description: 'Build and tests succeeded.'
+        }
         failure {
-            script {
-                // CHANGE_ID is set only for pull requests, so it is safe to access the pullRequest global variable
-                if (env.CHANGE_ID) {
-                    pullRequest.addLabel('Build Failed')
-                }
-            }
+            githubNotify context: 'build', status: 'FAILURE', description: 'Build or tests failed.'
         }
     }
 }
