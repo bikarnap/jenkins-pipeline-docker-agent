@@ -47,11 +47,25 @@ pipeline {
                              onlyIfSuccessful: true
             cleanWs()
         }
-         success {
-            githubNotify context: 'build', status: 'SUCCESS', description: 'Build and tests succeeded.'
-        }
-        failure {
-            githubNotify context: 'build', status: 'FAILURE', description: 'Build or tests failed.'
-        }
+        success {
+        githubNotify(
+            context: 'build',
+            status: 'SUCCESS',
+            description: 'Build and tests succeeded.',
+            repo: 'your-repo-name',         // Specify your repo name here
+            credentialsId: 'your-credentials-id', // Specify your GitHub credentials ID
+            sha: "${env.GIT_COMMIT}"  // Use the commit SHA
+        )
+    }
+    failure {
+        githubNotify(
+            context: 'build',
+            status: 'FAILURE',
+            description: 'Build or tests failed.',
+            repo: 'your-repo-name',         // Specify your repo name here
+            credentialsId: 'your-credentials-id', // Specify your GitHub credentials ID
+            sha: "${env.GIT_COMMIT}"  // Use the commit SHA
+        )
+    }
     }
 }
