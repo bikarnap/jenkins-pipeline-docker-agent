@@ -5,23 +5,21 @@ pipeline {
         timestamps()
     }
 
-    stages {
-        // stage('Checkout') {
-        //     steps {
-        //         // Checkout source code from version control
-        //         checkout scm
-        //     }
-        // }
+    environment {
+        WORKSPACE_DIR = "${env.WORKSPACE}"
+    }
 
+    stages {
         stage('Build and Use Image 1') {
             agent {
                 dockerfile {
                     filename "first.Dockerfile"
-                    // dir '../' // Directory where Dockerfile1 is located
+                    additionalBuildArgs '--build-arg WORKSPACE=/workspace'
+                    args "-v ${env.WORKSPACE}:/workspace"
                 }
             }
             steps {
-                sh 'echo "This is some content" > ./shared_file.txt'
+                sh 'echo "This is some content" > /workspace/shared_file.txt'
                 sh 'echo "File created in container 1"'
             }
         }
@@ -30,11 +28,12 @@ pipeline {
             agent {
                 dockerfile {
                     filename "second.Dockerfile"
-                    // dir '../' // Directory where Dockerfile2 is located
+                    additionalBuildArgs '--build-arg WORKSPACE=/workspace'
+                    args "-v ${env.WORKSPACE}:/workspace"
                 }
             }
             steps {
-                sh 'cat ./shared_file.txt'
+                sh 'cat /workspace/shared_file.txt'
                 sh 'echo "File contents printed from container 2"'
             }
         }
@@ -42,13 +41,11 @@ pipeline {
 
     post {
         always {
-          
-            archiveArtifacts artifacts: '*.txt',
-                   allowEmptyArchive: true,
-                   fingerprint: true,
-                   onlyIfSuccessful: true
-            cleanWs() // Clean up workspace after the build
-            
+            archiveArtifacts artifacts: 'shared_file.txt',
+                             allowEmptyArchive: true,
+                             fingerprint: true,
+                             onlyIfSuccessful: true
+            cleanWs()
         }
     }
 }
