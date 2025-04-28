@@ -10,6 +10,11 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+    steps {
+        git 'https://github.com/bikarnap/jenkins-pipeline-docker-agent.git'
+    }
+}
         stage('Build and Use Image 1') {
             agent {
                 dockerfile {
