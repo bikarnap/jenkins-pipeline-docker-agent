@@ -55,6 +55,7 @@ pipeline {
         githubNotify context: 'CI',
                      status: 'SUCCESS',
                      description: 'Build and tests succeeded.',
+                     account: 'bikarnap',
                      repo: 'jenkins-pipeline-docker-agent',
                      credentialsId: 'd1df88d8-adfc-4c13-bc76-4f6059fafb16',
                      sha: "${env.GIT_COMMIT}"
@@ -63,6 +64,7 @@ pipeline {
         githubNotify context: 'CI',
                      status: 'FAILURE',
                      description: 'Build or tests failed.',
+                     account: 'bikarnap',
                      repo: 'jenkins-pipeline-docker-agent',
                      credentialsId: 'd1df88d8-adfc-4c13-bc76-4f6059fafb16',
                      sha: "${env.GIT_COMMIT}"
