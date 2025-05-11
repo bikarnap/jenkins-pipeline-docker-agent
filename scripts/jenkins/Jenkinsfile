@@ -55,14 +55,14 @@ pipeline {
         githubNotify context: 'CI',
                      status: 'SUCCESS',
                      description: 'Build and tests succeeded.',
-                     credentialsId: 'e23ba681-aa46-47d6-88a9-7d0ab9623366',
+                     credentialsId: 'd1df88d8-adfc-4c13-bc76-4f6059fafb16',
                      sha: "${env.GIT_COMMIT}"
     }
     failure {
         githubNotify context: 'CI',
                      status: 'FAILURE',
                      description: 'Build or tests failed.',
-                     credentialsId: 'e23ba681-aa46-47d6-88a9-7d0ab9623366',
+                     credentialsId: 'd1df88d8-adfc-4c13-bc76-4f6059fafb16',
                      sha: "${env.GIT_COMMIT}"
     }
 }
