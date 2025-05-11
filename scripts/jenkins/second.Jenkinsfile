@@ -15,7 +15,7 @@ pipeline {
         stage('Build and Use Image 1') {
             agent {
                 dockerfile {
-                    label 'generic
+                    label 'generic'
                     filename "first.Dockerfile"
                     additionalBuildArgs '--build-arg WORKSPACE=/workspace'
                     args "-v ${env.WORKSPACE}:/workspace"
@@ -30,7 +30,7 @@ pipeline {
         stage('Build and Use Image 2') {
             agent {
                 dockerfile {
-                    label 'generic
+                    label 'generic'
                     filename "second.Dockerfile"
                     additionalBuildArgs '--build-arg WORKSPACE=/workspace'
                     args "-v ${env.WORKSPACE}:/workspace"
