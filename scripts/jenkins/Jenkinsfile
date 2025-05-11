@@ -56,8 +56,7 @@ pipeline {
             context: 'build',
             status: 'SUCCESS',
             description: 'Build and tests succeeded.',
-            repo: 'your-repo-name',         // Specify your repo name here
-            credentialsId: 'your-credentials-id', // Specify your GitHub credentials ID
+            credentialsId: 'bikarnap', // Specify your GitHub credentials ID
             sha: "${env.GIT_COMMIT}"  // Use the commit SHA
         )
     }
@@ -66,8 +65,7 @@ pipeline {
             context: 'build',
             status: 'FAILURE',
             description: 'Build or tests failed.',
-            repo: 'your-repo-name',         // Specify your repo name here
-            credentialsId: 'your-credentials-id', // Specify your GitHub credentials ID
+            credentialsId: 'bikarnap', // Specify your GitHub credentials ID
             sha: "${env.GIT_COMMIT}"  // Use the commit SHA
         )
     }
