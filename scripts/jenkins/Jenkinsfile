@@ -57,7 +57,7 @@ pipeline {
                      description: 'Build and tests succeeded.',
                      account: 'bikarnap',
                      repo: 'jenkins-pipeline-docker-agent',
-                     credentialsId: 'github_pat',
+                     credentialsId: 'github_cred_id',
                      sha: "${env.GIT_COMMIT}"
     }
     failure {
@@ -66,7 +66,7 @@ pipeline {
                      description: 'Build or tests failed.',
                      account: 'bikarnap',
                      repo: 'jenkins-pipeline-docker-agent',
-                     credentialsId: 'github_pat',
+                     credentialsId: 'github_cred_id',
                      sha: "${env.GIT_COMMIT}"
     }
 }
