@@ -51,7 +51,7 @@ pipeline {
         cleanWs()
     }
     success {
-        githubNotify context: 'CI',
+        githubNotify context: 'build',
                      status: 'SUCCESS',
                      description: 'Build and tests succeeded.',
                      account: 'bikarnap',
@@ -60,7 +60,7 @@ pipeline {
                      sha: "${env.GIT_COMMIT}"
     }
     failure {
-        githubNotify context: 'CI',
+        githubNotify context: 'build',
                      status: 'FAILURE',
                      description: 'Build or tests failed.',
                      account: 'bikarnap',
