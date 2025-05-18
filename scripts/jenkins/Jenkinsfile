@@ -1,5 +1,6 @@
 pipeline {
     agent { label 'generic' }
+    // label 'generic'
     options {
         buildDiscarder(logRotator(daysToKeepStr: '5', artifactDaysToKeepStr: '5', numToKeepStr: '5'))
         timestamps()
